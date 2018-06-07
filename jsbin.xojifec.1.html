@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2018 by bialka104b (http://jsbin.com/xojifec/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+<meta name="description" content="Narysuj cokolwiek">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Stworz</title>
+</head>
+<body>
+  <canvas id="myCanvas" height="300" width="300" style="border: 1px solid black"></canvas>
+<script id="jsbin-javascript">
+var canvasLoader = function(){
+  var self = this;
+  window.requestAnimFrame=function(){return window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.oRequestAnimationFrame||window.msRequestAnimationFrame||function(a){window.setTimeout(a,1E3/60)}}();
+  self.init = function(){
+    self.canvas = document.getElementById('myCanvas');
+    self.context = self.canvas.getContext('2d');
+    self.context.lineWidth = .5;
+    self.context.strokeStyle = 'rgba(255,0,0,.75)';
+    self.count = 111;
+    self.rotation = 200*(Math.PI/360);
+    self.speed = 100;
+    self.canvasLoop();
+  };
+  self.updateLoader = function(){
+    self.rotation += self.speed/50;
+  };
+  self.renderLoader = function(){
+    self.context.save();
+    self.context.globalCompositeOperation = 'source-over';
+    self.context.translate(150, 150);
+    self.context.rotate(self.rotation);
+    var i = self.count;
+    while(i--){
+      self.context.beginPath();
+      self.context.arc(20, 1, i+(Math.random()*30), Math.random(), Math.PI/3+(Math.random()/5), false);
+      self.context.stroke();
+    }
+    self.context.restore();
+  };
+  self.canvasLoop = function(){
+    requestAnimFrame(self.canvasLoop, self.canvas);
+    self.context.globalCompositeOperation = 'destination-out';
+    self.context.fillStyle = 'rgba(0,0,5,.05)';
+    self.context.fillRect(0,0,300,300);
+    self.updateLoader();
+    self.renderLoader();
+  };
+};
+
+var loader = new canvasLoader();
+loader.init();
+</script>
+</body>
+</html>
