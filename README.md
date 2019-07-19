@@ -1,8 +1,8 @@
-# wentylator_na_lato
+# Summer fan / wentylator na lato
 
-Program przedstawia animacje prawdziwego wentylatora biurowego :)
-Patrząc na niego mam wrażenie że jest mi chłodniej :)
+The program presents animations of a real office fan :)
+Looking at him, I have the impression that I'm colder :)
 
-Zastosowano Html5 i JavaScript
+Html5 and JavaScript were used
 
-url animacji https://output.jsbin.com/xojifec
+url animation https://output.jsbin.com/xojifec
